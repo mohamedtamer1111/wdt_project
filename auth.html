@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Egyptian Pharmacopoeia</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-body { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--primary-green); }
+        .auth-card { background: white; padding: 40px; border-radius: 15px; width: 350px; text-align: center; }
+        .auth-tabs { display: flex; margin-bottom: 20px; border-bottom: 1px solid #eee; }
+        .tab { flex: 1; padding: 10px; cursor: pointer; color: #999; }
+        .tab.active { color: var(--primary-green); border-bottom: 2px solid var(--primary-green); font-weight: bold; }
+        .auth-form { display: none; flex-direction: column; gap: 10px; }
+        .auth-form.active { display: flex; }
+        .btn-auth { background: var(--primary-green); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; }
+    </style>
+</head>
+<body class="auth-body">
+    <div class="auth-card">
+        <h2>🌿 Pharmacopoeia</h2>
+        <div class="auth-tabs">
+            <div id="lT" class="tab active" onclick="sel('login')">Login</div>
+            <div id="sT" class="tab" onclick="sel('signup')">Sign Up</div>
+        </div>
+        <form id="loginForm" class="auth-form active">
+            <input type="email" id="le" placeholder="Email" class="search-input" required>
+            <input type="password" id="lp" placeholder="Password" class="search-input" required>
+            <button class="btn-auth">Login</button>
+        </form>
+        <form id="signupForm" class="auth-form">
+            <input type="text" id="sn" placeholder="Name" class="search-input" required>
+            <input type="email" id="se" placeholder="Email" class="search-input" required>
+            <input type="password" id="sp" placeholder="Password" class="search-input" required>
+            <button class="btn-auth">Sign Up</button>
+        </form>
+    </div>
+    <script>
+        function sel(t){
+            document.querySelectorAll('.tab, .auth-form').forEach(el=>el.classList.remove('active'));
+            document.getElementById(t==='login'?'lT':'sT').classList.add('active');
+            document.getElementById(t+'Form').classList.add('active');
+        }
+        document.getElementById('signupForm').onsubmit=(e)=>{
+            e.preventDefault();
+            let users = JSON.parse(localStorage.getItem('users')||'[]');
+            users.push({name:document.getElementById('sn').value, email:document.getElementById('se').value, pass:document.getElementById('sp').value});
+            localStorage.setItem('users', JSON.stringify(users));
+            alert("Account created!"); sel('login');
+        };
+        document.getElementById('loginForm').onsubmit=(e)=>{
+            e.preventDefault();
+            let users = JSON.parse(localStorage.getItem('users')||'[]');
+            let u = users.find(u=>u.email===document.getElementById('le').value && u.pass===document.getElementById('lp').value);
+            if(u){ localStorage.setItem('isLogged','true'); window.location.href='index.html'; }
+            else alert("Wrong data!");
+        }
+    </script>
+</body>
+</html>

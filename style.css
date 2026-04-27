@@ -112,25 +112,36 @@ header { background: var(--primary-green); color: white; padding: 15px 0; box-sh
 }
 
 /* مستطيل إدخال الإيميل */
-.email-form {
-    display: flex;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 20px;
+/* تنسيق لينك الإيميل المباشر */
+.direct-email-link {
+    display: inline-block;
+    color: #4CAF50; /* لون أخضر عشان يشد العين */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
 }
 
-.email-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    padding: 12px 15px;
-    color: #fff;
-    outline: none;
-    font-size: 0.95rem;
+.direct-email-link:hover {
+    color: #ffffff; /* يتحول لأبيض لما الماوس ييجي عليه */
+    text-decoration: underline;
+}
+/* تنسيق لينك الإيميل المباشر */
+.direct-email-link {
+    display: inline-block;
+    color: #4CAF50; /* لون أخضر عشان يشد العين */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
 }
 
+.direct-email-link:hover {
+    color: #ffffff; /* يتحول لأبيض لما الماوس ييجي عليه */
+    text-decoration: underline;
+}
 .email-input::placeholder {
     color: #a3c9b8;
 }

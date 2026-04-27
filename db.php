@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'pharmacopoeia_db'; 
+$dbname = 'pharmacopea_db'; 
 $username = 'root'; 
 $password = ''; 
 
